@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:market/models/article.dart';
 import 'package:market/models/magasin.dart';
 import 'package:market/repositories/article_repository.dart';
@@ -17,6 +18,7 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
   String? image; // sera utilisée plus tard pour utiliser imagepicker
   String? nom;
   String? prix;
+  final ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +54,13 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       IconButton(
-                          icon: Icon(Icons.camera_enhance), onPressed: null),
+                          icon: Icon(Icons.camera_enhance), onPressed: (){
+                            getImage(ImageSource.camera);
+                      }),
                       IconButton(
-                          icon: Icon(Icons.photo_library), onPressed: null)
+                          icon: Icon(Icons.photo_library), onPressed: (){
+                        getImage(ImageSource.gallery);
+                      })
                     ],
                   ),
                   textfield(TypeTextField.nom, "Nom de l'article"),
@@ -66,6 +72,12 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
         ),
       ),
     );
+  }
+  Future<void> getImage(ImageSource source) async{
+    XFile? pickedFile = await picker.pickImage(source: source);
+    setState(() {
+      image = pickedFile?.path;
+    });
   }
 
   Future<void> ajouter() async {
