@@ -20,7 +20,7 @@ class DataBaseService{
     //Récupérer le chemin "Document" de l'app
     Directory directory = await getApplicationDocumentsDirectory();
     String databaseFullPath = "${directory.path}/database.db";
-    print("databaseFullPath = ${databaseFullPath}");
+    //print("databaseFullPath = ${databaseFullPath}");
     Database bdd = await openDatabase(databaseFullPath, version: 1,onCreate: _onCreate);
 
     return bdd;
