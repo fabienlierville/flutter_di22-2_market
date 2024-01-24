@@ -33,7 +33,7 @@ class _ArticlePageState extends State<ArticlePage> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context){
+                  MaterialPageRoute(builder: (BuildContext context){
                     return ArticleAddPage(magasin: widget.magasin);
                   })
                 );

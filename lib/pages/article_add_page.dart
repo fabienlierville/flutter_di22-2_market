@@ -27,7 +27,6 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
           TextButton(
               onPressed: (){
                 ajouter();
-                Navigator.pop(context);
               },
               child: Text('Valider',))
         ],
@@ -69,7 +68,7 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
     );
   }
 
-  void ajouter() async {
+  Future<void> ajouter() async {
     if (nom != null && prix != null) {
       Article article = Article(
           nom: nom!,
