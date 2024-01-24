@@ -55,7 +55,7 @@ class _ArticlePageState extends State<ArticlePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(article.nom),
-                      (article.image == null)
+                      (article.image == null || article.image.length == 0)
                           ? Image.asset("assets/images/no_image.png")
                           : Image.file(File(article.image)),
                       Text((article.prix == null)
