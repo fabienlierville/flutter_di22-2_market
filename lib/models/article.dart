@@ -3,14 +3,14 @@ class Article{
   int? id;
   String nom;
   double prix;
-  String Image;
+  String image;
   int magasin; // clef étrangère
 
   Article({
     this.id,
     required this.nom,
     required this.prix,
-    required this.Image,
+    required this.image,
     required this.magasin,
   });
 
@@ -19,7 +19,7 @@ class Article{
       'id': this.id,
       'nom': this.nom,
       'prix': this.prix,
-      'Image': this.Image,
+      'image': this.image,
       'magasin': this.magasin,
     };
   }
@@ -29,7 +29,7 @@ class Article{
       id: map['id'] as int,
       nom: map['nom'] as String,
       prix: map['prix'] as double,
-      Image: map['Image'] as String,
+      image: map['image'] as String,
       magasin: map['magasin'] as int,
     );
   }

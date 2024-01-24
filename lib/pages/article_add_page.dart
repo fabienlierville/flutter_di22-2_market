@@ -75,8 +75,8 @@ class _ArticleAddPageState extends State<ArticleAddPage> {
           nom: nom!,
           prix: double.tryParse(prix!)!,
           magasin: widget.magasin.id!,
-          Image: image ?? "");
-      // await ArticleRepository.upsert(article);
+          image: image ?? "");
+      await ArticleRepository.upsert(article);
       Navigator.pop(context); //Retour page précédente
     }
   }
