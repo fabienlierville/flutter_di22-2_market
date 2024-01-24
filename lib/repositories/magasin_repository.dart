@@ -27,4 +27,27 @@ class MagasinRepository{
     });
     return l;
   }
+
+  static Future<Magasin?> getById(int id) async{
+    // Récupérer la connexion BDD
+    Database bdd = await DataBaseService.database;
+
+    List<Map<String,dynamic>> result = await bdd.rawQuery("SELECT id,nom FROM magasin WHERE id = ?",[id]);
+    if(result.length >0){
+      return Magasin.fromMap(result[0]);
+    }
+    return null;
+  }
+
+  static Future<int> update(Magasin magasin) async{
+    // Récupérer la connexion BDD
+    Database bdd = await DataBaseService.database;
+    return await bdd.update("magasin", magasin.toMap(),where: "id = ?",whereArgs: [magasin.id]);
+  }
+
+  static Future<int> delete(Magasin magasin) async{
+    // Récupérer la connexion BDD
+    Database bdd = await DataBaseService.database;
+    return await bdd.delete("magasin",where: "id=?",whereArgs: [magasin.id]);
+  }
 }

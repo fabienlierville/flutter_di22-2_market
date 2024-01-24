@@ -26,11 +26,34 @@ class _HomePageState extends State<HomePage> {
             print(magasin.id);
 
              */
+
             List<Magasin> magasins = await MagasinRepository.getAll();
             magasins.forEach((element) {
               print("ID = ${element.id} | NOM = ${element.nom}");
             });
+
+        Magasin? magasin = await MagasinRepository.getById(1);
+        int result = await MagasinRepository.delete(magasin!);
+        print(result);
+
+          magasins = await MagasinRepository.getAll();
+          magasins.forEach((element) {
+          print("ID = ${element.id} | NOM = ${element.nom}");
+          });
+            /*
+            Magasin? magasin = await MagasinRepository.getById(1);
+            if(magasin != null){
+              print("ID = ${magasin.id} | NOM = ${magasin.nom}");
+            }
+            magasin!.nom = "Leclerc ROUEN";
+
+            await MagasinRepository.update(magasin);
+            Magasin? magasin2 = await MagasinRepository.getById(1);
+            print("ID = ${magasin2!.id} | NOM = ${magasin2!.nom}");
+             */
           },
+
+
         ),
       ),
     );
