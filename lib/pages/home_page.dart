@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/models/magasin.dart';
+import 'package:market/pages/article_page.dart';
 import 'package:market/repositories/magasin_repository.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,6 +40,14 @@ class _HomePageState extends State<HomePage> {
             Magasin magasin = magasins![index];
             return ListTile(
               title: Text(magasin.nom),
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context){
+                      return ArticlePage(magasin: magasin);
+                    })
+                );
+              },
               leading: IconButton(
                 icon: Icon(Icons.edit),
                 onPressed: () {
@@ -88,7 +97,6 @@ class _HomePageState extends State<HomePage> {
               onChanged: (String str) {
                 //Pas de SetState car c'est une string qui ne sera pas changé ailleurs
                 saisie= str;
-                print(saisie);
               },
             ),
             actions: <Widget>[

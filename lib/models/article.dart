@@ -1,13 +1,13 @@
 
 class Article{
-  int id;
+  int? id;
   String nom;
   double prix;
   String Image;
   int magasin; // clef étrangère
 
   Article({
-    required this.id,
+    this.id,
     required this.nom,
     required this.prix,
     required this.Image,
