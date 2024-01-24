@@ -20,9 +20,16 @@ class _HomePageState extends State<HomePage> {
         child: ElevatedButton(
           child: Text("Ajout Magasin"),
           onPressed: () async{
+            /*
             Magasin magasin = Magasin(nom: "Leclerc");
             magasin = await MagasinRepository.ajout(magasin);
             print(magasin.id);
+
+             */
+            List<Magasin> magasins = await MagasinRepository.getAll();
+            magasins.forEach((element) {
+              print("ID = ${element.id} | NOM = ${element.nom}");
+            });
           },
         ),
       ),
