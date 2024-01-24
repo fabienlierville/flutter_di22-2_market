@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         title: Text("Magasins"),
         actions: [
           TextButton(onPressed: ajoutDialog,
-              child: Text("Ajouter", style: TextStyle(color: Colors.white),))
+              child: Text("Ajouter"))
         ],
 
       ),
